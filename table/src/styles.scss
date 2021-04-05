@@ -1,0 +1,447 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$organizer-primary: mat-palette($mat-indigo);
+$organizer-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$organizer-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$organizer-theme: mat-light-theme((
+  color: (
+    primary: $organizer-primary,
+    accent: $organizer-accent,
+    warn: $organizer-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($organizer-theme);
+
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "NanumGothic-Bold";
+  src: url("/assets/font-family/NanumGothic-Bold.ttf");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "NanumGothic-Regular";
+  src: url("/assets/font-family/NanumGothic-Regular.ttf");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "PTSansNarrow-Bold";
+  src: url("/assets/font-family/PTSansNarrow-Bold.ttf");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "PTSansNarrow-Regular";
+  src: url("/assets/font-family/PTSansNarrow-Regular.ttf");
+  font-weight: normal;
+}
+
+$color-title: #816852;
+$color-element: #72A3A6;
+$color-main: #ffffff;
+$color-header: #30D9CD;
+$color-text: #2A686B;
+$color-pink: #E79F9A;
+$desktop-width: 1060px;
+$tablet-width: 768px;
+$mobile-width: 320px;
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (min-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
+%button--icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: 100%;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  cursor: pointer;
+}
+
+html, body, ul, li, p, a, span, div, button {
+  margin: 0;
+  padding: 0;
+  font-family: PTSansNarrow-Regular, sans-serif;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+input, button, textarea, select {
+  box-sizing: border-box;
+  resize: none;
+  outline: none;
+  font-family: PTSansNarrow-Regular, sans-serif;
+
+  &:focus,
+  &:hover {
+    outline: none;
+    border: none;
+  }
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-family: NanumGothic-Bold, sans-serif;
+  font-weight: bold;
+  letter-spacing: -2px;
+  text-shadow: 1px 1px 3px rgba($color-header, 0.3);
+  text-transform: uppercase;
+  @include tablet {
+    letter-spacing: -2px;
+  }
+}
+
+body {
+  overflow-y: scroll;
+  min-width: 320px;
+  background-color: $color-main;
+}
+
+.container {
+  @include mobile {
+    width: calc(100% - 20px);
+  }
+  @include tablet {
+    width: calc(100% - 40px);
+  }
+  @include desktop {
+    width: 998px;
+  }
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button--blue {
+  background-color: $color-header;
+  color: $color-main;
+  padding: 15px 30px;
+  font-size: 14px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #99a29e;
+    color: #dce2e0;
+    box-shadow: inset -3px -3px 7px 6px rgba(grey, 0.3);
+    cursor: auto;
+
+    &:hover,
+    &:focus {
+      background-color: #99a29e;
+      color: #dce2e0;
+      box-shadow: inset -3px -3px 7px 6px rgba(grey, 0.3);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    border: none;
+    color: $color-main;
+    box-shadow: 4px 3px 5px 0 rgba(#000000, 0.2);
+  }
+
+  &:active {
+    box-shadow: inset -4px -2px 10px 0px rgba(grey, 0.5);
+    outline: none;
+  }
+}
+
+.button--main {
+  background-color: $color-element;
+  color: $color-main;
+  padding: 15px 30px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #99a29e;
+    color: #dce2e0;
+    box-shadow: inset -3px -3px 7px 6px rgba(grey, 0.3);
+    cursor: auto;
+
+    &:hover,
+    &:focus {
+      background-color: #99a29e;
+      color: #dce2e0;
+      box-shadow: inset -3px -3px 7px 6px rgba(grey, 0.3);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: $color-main;
+    box-shadow: 4px 3px 5px 0 rgba(#000000, 0.2);
+    border: none;
+  }
+
+  &:active {
+    box-shadow: inset -4px -2px 10px 0px rgba(grey, 0.5);
+    outline: none;
+  }
+}
+
+.button--pink {
+  background-color: $color-pink;
+  color: $color-main;
+  padding: 15px 30px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+
+  &:disabled {
+    background-color: #99a29e;
+    color: #dce2e0;
+    box-shadow: inset -3px -3px 7px 6px rgba(grey, 0.3);
+    cursor: auto;
+
+    &:hover,
+    &:focus {
+      background-color: #99a29e;
+      color: #dce2e0;
+      box-shadow: inset -3px -3px 7px 6px rgba(grey, 0.3);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: $color-main;
+    box-shadow: 4px 3px 5px 0 rgba(#000000, 0.2);
+    border: none;
+  }
+
+  &:active {
+    box-shadow: inset -4px -2px 10px 0px rgba(grey, 0.5);
+    outline: none;
+  }
+}
+
+.button--brown {
+  background-color: $color-title;
+  color: $color-main;
+  padding: 15px 30px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #99a29e;
+    color: #dce2e0;
+    box-shadow: inset -3px -3px 7px 6px rgba(grey, 0.3);
+    cursor: auto;
+
+    &:hover,
+    &:focus {
+      background-color: #99a29e;
+      color: #dce2e0;
+      box-shadow: inset -3px -3px 7px 6px rgba(grey, 0.3);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: $color-main;
+    box-shadow: 4px 3px 5px 0 rgba(#000000, 0.2);
+    border: none;
+  }
+
+  &:active {
+    box-shadow: inset -4px -2px 10px 0px rgba(grey, 0.5);
+    outline: none;
+  }
+}
+
+.button--link {
+  @extend %button--icon;
+  position: relative;
+  color: $color-header;
+  text-decoration: underline;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: $color-main;
+  }
+
+  &:active {
+    text-shadow: inset 4px 3px 5px 0 rgba($color-main, 0.3);
+  }
+}
+
+.button--icon {
+  @extend %button--icon;
+
+  &-delete {
+    @extend %button--icon;
+    background-size: 76%;
+    background-image: url("./assets/img/delete.svg");
+
+    &:hover {
+      background-image: url("./assets/img/delete-active.svg");
+    }
+  }
+
+  &-close {
+    @extend %button--icon;
+    background-image: url("./assets/img/close.svg");
+
+    &:hover {
+      background-image: url("./assets/img/close-active.svg");
+    }
+  }
+}
+
+.wrapper-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-family: PTSansNarrow-Regular, sans-serif;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.wrapper-header {
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+
+  .button--blue {
+    margin-left: 20px;
+    padding: 5px 10px;
+    font-size: 16px
+  }
+
+  @include tablet {
+    margin-top: 40px;
+  }
+  @include desktop {
+    margin-top: 65px;
+  }
+}
+
+.title {
+  @include tablet {
+    font-size: 26px;
+  }
+  @include desktop {
+    font-size: 32px;
+  }
+  margin-bottom: 0;
+}
+
+.input {
+  border: 1px solid $color-header;
+  padding: 10px 15px;
+  border-radius: 6px;
+  color: $color-title;
+  background-color: rgba(#fff, 0.4);
+
+  &:hover,
+  &:focus {
+    border: 1px solid $color-header;
+    box-shadow: 4px 3px 5px 0 rgba($color-header, 0.3);
+  }
+}
+
+.select {
+  border: 1px solid $color-header;
+  padding: 10px 15px;
+  border-radius: 6px;
+  color: $color-title;
+  background-color: rgba(#fff, 0.4);
+
+  &:hover,
+  &:focus {
+    border: 1px solid $color-header;
+    box-shadow: 4px 3px 5px 0 rgba($color-header, 0.3);
+  }
+}
+
+.label {
+  color: $color-title;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.mat-dialog-container {
+  padding: 20px !important;
+  background-color: $color-main;
+  border-radius: 10px !important;
+  box-shadow: 0px 11px 15px -7px rgba($color-title, 0.2), 0px 24px 38px 3px rgba($color-title, 0.14), 0px 9px 46px 8px rgba($color-title, 0.12);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+

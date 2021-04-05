@@ -1,0 +1,31 @@
+<section class="list-table__container">
+  <button type="button" class="button--brown" (click)="addTable()">+ стол</button>
+  <div class="list-table__wrapper-button container">
+    <button type="button" class="list-table__button--main button--main" (click)="filterTable('status')"
+            [class.active]="active === 'status'">Пустые столы
+    </button>
+    <button type="button" class="list-table__button--blue button--blue" (click)="filterTable('')"
+            [class.active]="active === ''">Показать все
+    </button>
+    <button type="button" class="list-table__button--pink button--pink" (click)="filterTable('amount_execute_order')"
+            [class.active]="active === 'amount_execute_order'">Невыполнеными заказами
+    </button>
+  </div>
+  <ul class="list-table__list-cards container">
+    <li *ngFor="let table of tables" class="list-table__card" (click)="goToTable(table && table.id)">
+      <h2 class="list-table__title">{{table.name}}</h2>
+      <p class="list-table__wrapper-row">
+        <span class="wrapper-row__title">Гости:</span>
+        <span class="wrapper-row__text">{{table.count_client}}</span>
+      </p>
+      <p class="list-table__wrapper-row">
+        <span class="wrapper-row__title">Невыполненые заказы:</span>
+        <span class="wrapper-row__text"
+              [class.danger]="table.amount_execute_order !== 0">{{table.amount_execute_order}}</span>
+      </p>
+    </li>
+  </ul>
+  <app-loader *ngIf="loader"></app-loader>
+  <p *ngIf="textEmpty" class="list-table__text-empty">Список столов пуст</p>
+  <p *ngIf="error" class="list-table__text-error">Произошла ошбка на сервере. Попробуйте позже</p>
+</section>

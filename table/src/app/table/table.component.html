@@ -1,0 +1,62 @@
+<section class="table">
+  <button type="button" class="table__button--blue button--blue" (click)="goBack()">Список столов</button>
+  <div class="table__wrapper-button">
+    <button type="button" class="button--pink" (click)="addClient()">+ клиент</button>
+    <button type="button" class="button--brown" (click)="addOrder()"
+            [disabled]="dataSource && dataSource.length === 0">+ заказ</button>
+  </div>
+  <table cdk-table [dataSource]="dataSource || []" class="table__table">
+    <ng-container cdkColumnDef="customer-name">
+      <th cdk-header-cell *cdkHeaderCellDef>
+        <span class="row__title">Гости</span>
+      </th>
+      <td cdk-cell *cdkCellDef="let row">
+        <span class="row__text-name">{{row.name}}</span>
+        <button type="button" class="row__button--pink button--pink" (click)="delete(row.id)">Удалить</button>
+      </td>
+    </ng-container>
+    <ng-container cdkColumnDef="order-describe">
+      <th cdk-header-cell *cdkHeaderCellDef>
+        <span class="row__title">Заказ</span>
+      </th>
+      <td cdk-cell *cdkCellDef="let row">
+        <p *ngIf="row.orders.length === 0" class="table__row">
+          <span>Заказов нет</span>
+        </p>
+        <p *ngFor="let order of row.orders; let i = index;" class="table__row" [class.count]="i%2 !== 0">
+          <span>{{ order.describe }}</span>
+        </p>
+      </td>
+    </ng-container>
+    <ng-container cdkColumnDef="order-status">
+      <th cdk-header-cell *cdkHeaderCellDef>
+        <span class="row__title">Статус заказа</span>
+      </th>
+      <td cdk-cell *cdkCellDef="let row">
+        <p *ngFor="let order of row.orders; let i = index;" class="table__row" [class.count]="i%2 !== 0">
+          <span class="row__text-status"
+                [class.row__text-status--done]="order.status === 'done'">{{ order.status }}</span>
+        </p>
+      </td>
+    </ng-container>
+    <ng-container cdkColumnDef="btn">
+      <th cdk-header-cell *cdkHeaderCellDef></th>
+      <td cdk-cell *cdkCellDef="let row">
+        <p *ngFor="let order of row.orders; let i = index;" class="table__row" [class.count]="i%2 !== 0">
+          <app-loader *ngIf="loader === order.id"></app-loader>
+          <button type="button" class="button--main" *ngIf="order.status !== 'done' && loader !== order.id"
+                  (click)="execute(order.id, i)">Выполнить
+          </button>
+          <span class="row__text-error" *ngIf="errorExecute === order.id">Произошла ошибка</span>
+        </p>
+      </td>
+    </ng-container>
+    <ng-container>
+      <tr cdk-header-row *cdkHeaderRowDef=displayedColumns></tr>
+      <tr cdk-row *cdkRowDef="let row; columns: displayedColumns"></tr>
+    </ng-container>
+  </table>
+  <app-loader *ngIf="loaderTable"></app-loader>
+  <p *ngIf="dataSource?.length === 0 && !loader" class="table__text-empty">Гостей нет</p>
+  <p *ngIf="error" class="table__text-error">Произошла ошбка на сервере. Попробуйте позже</p>
+</section>

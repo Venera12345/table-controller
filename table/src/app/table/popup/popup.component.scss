@@ -1,0 +1,48 @@
+@import "src/styles";
+@import "src/assets/styles/modal";
+
+.modal {
+  width: 350px;
+}
+
+.modal__wrapper-button {
+  margin-top: 20px;
+}
+
+.input {
+  width: 100%;
+}
+
+.modal__text {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.select {
+  width: 100%;
+}
+
+.wrapper-input {
+  margin-top: 25px;
+  margin-bottom: 40px;
+}
+
+app-loader {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.modal__wrapper-loader {
+  position: relative;
+}
+
+.modal__text-error {
+  color: $color-pink;
+  font-size: 16px;
+  position: absolute;
+  top: -32px;
+  width: 100%;
+  text-align: center;
+}

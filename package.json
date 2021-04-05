@@ -1,0 +1,35 @@
+{
+  "name": "board-order",
+  "version": "1.0.0",
+  "description": "Приложение для отслеживания заказов в кафе",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start-dev": "nodemon index.js",
+    "table-install": "npm install --prefix table",
+    "table": "npm run start --prefix table",
+    "dev": "concurrently \"npm run start-dev\" \"npm run table\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git branch -M mainhttps://github.com/Venera12345/table-controller.git"
+  },
+  "author": "Venera Andriushechkina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Venera12345/table-controller/issues"
+  },
+  "homepage": "https://github.com/Venera12345/table-controller#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.5.0",
+    "mongoose": "^5.12.3",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0"
+  }
+}

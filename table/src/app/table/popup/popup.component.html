@@ -1,0 +1,64 @@
+<section class="modal">
+  <button type="button" class="button--icon-close" (click)="matDialogRef.close()"></button>
+  <ng-container *ngIf="data.type === 'add-order'">
+    <form (ngSubmit)="createOrder()" [formGroup]="form">
+      <div class="modal__wrapper-loader">
+        <p class="modal__text">Добавление заказа</p>
+        <app-loader *ngIf="loader"></app-loader>
+        <p class="modal__text-error" *ngIf="error">При добавление произошла ошибка</p>
+      </div>
+      <div>
+        <label class="label">Введите описание заказа</label>
+        <select formControlName="client" class="select">
+          <option value=" ">Выберите пользователя</option>
+          <option *ngFor="let client of listClient" value="{{client.id}}">{{client.name}}</option>
+        </select>
+      </div>
+      <p class="wrapper-input">
+        <label for="describe" class="label">Введите описание заказа</label>
+        <input type="text" placeholder="Кофе 0.3" name="describe" id="describe" formControlName="describe"
+               class="input">
+      </p>
+      <div class="modal__wrapper-button">
+        <button type="submit" class="button--blue" [disabled]="form.invalid">Добавить</button>
+        <button class="button--main" (click)="matDialogRef.close()">Отмена</button>
+      </div>
+    </form>
+  </ng-container>
+  <ng-container *ngIf="data.type === 'add-client'">
+    <form (ngSubmit)="createClient()" [formGroup]="form">
+      <div class="modal__wrapper-loader">
+        <p class="modal__text">Добавление клиента</p>
+        <app-loader *ngIf="loader"></app-loader>
+        <p class="modal__text-error" *ngIf="error">При добавление произошла ошибка</p>
+      </div>
+      <p>
+        <label for="name" class="label">Введите имя клиента</label>
+        <input type="text" placeholder="Гость 1" name="describe" id="name" class="input"
+               formControlName="name">
+      </p>
+      <div class="modal__wrapper-button">
+        <button type="submit" class="button--blue" [disabled]="form.invalid">Добавить</button>
+        <button class="button--main" (click)="matDialogRef.close()">Отмена</button>
+      </div>
+    </form>
+  </ng-container>
+  <ng-container *ngIf="data.type === 'add-table'">
+    <form (ngSubmit)="createTable()" [formGroup]="form">
+      <div class="modal__wrapper-loader">
+        <p class="modal__text">Добавление стола</p>
+        <app-loader *ngIf="loader"></app-loader>
+        <p class="modal__text-error" *ngIf="error">При добавление произошла ошибка</p>
+      </div>
+      <p>
+        <label for="table_name" class="label">Введите название стола</label>
+        <input type="text" placeholder="Стол 1" name="describe" id="table_name" class="input"
+               formControlName="name">
+      </p>
+      <div class="modal__wrapper-button">
+        <button type="submit" class="button--blue" [disabled]="form.invalid">Добавить</button>
+        <button class="button--main" (click)="matDialogRef.close()">Отмена</button>
+      </div>
+    </form>
+  </ng-container>
+</section>

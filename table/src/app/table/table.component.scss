@@ -1,0 +1,136 @@
+@import "src/styles";
+
+.table {
+  overflow: auto;
+}
+
+.table__table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+
+  .cdk-header-cell {
+    border-bottom: 2px solid $color-text;
+    padding: 20px 0;
+    color: $color-element;
+  }
+
+  .cdk-cell {
+    &:first-of-type {
+      position: relative;
+    }
+
+    position: relative;
+    min-height: 60px;
+    text-align: center;
+    border: none;
+    padding: 0;
+    border-bottom: 1px solid $color-element;
+    color: $color-element;
+  }
+
+  .cdk-column-customer-name {
+    width: 20%;
+    min-width: 200px;
+  }
+}
+
+.row__button--pink {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 40px;
+}
+
+.table__row {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.count {
+    background-color: rgba($color-header, 0.1);
+  }
+}
+
+.row__text-status {
+  display: block;
+  padding: 4px;
+  border-radius: 2px;
+  width: 80px;
+  box-sizing: border-box;
+  background-color: rgba($color-pink, 0.4);
+
+  &.row__text-status--done {
+    background-color: rgba($color-header, 0.4);
+  }
+}
+
+.table__button--blue {
+  position: absolute;
+  top: 10px;
+  z-index: 1;
+  left: 30px;
+}
+
+.table__wrapper-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  @include tablet {
+    justify-content: flex-end;
+    position: absolute;
+    top: 10px;
+    z-index: 1;
+    right: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.button--pink {
+  margin-right: 40px;
+}
+
+.row__text-name {
+  overflow: hidden;
+  font-size: 20px;
+  font-weight: bold;
+  width: 180px;
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.table__text-empty {
+  color: $color-element;
+  font-size: 30px;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+
+.table__text-error {
+  color: $color-pink;
+  font-size: 30px;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+
+.row__title {
+  font-size: 18px;
+}
+
+app-header {
+  margin-top: 20px;
+}
+
+.row__text-error {
+  position: absolute;
+  top: -3px;
+  color: $color-pink;
+}

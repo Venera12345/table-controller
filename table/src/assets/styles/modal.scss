@@ -1,0 +1,28 @@
+.modal {
+  position: relative;
+  padding: 40px;
+}
+
+.modal__wrapper-button {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.button--blue {
+  margin-right: 10px;
+}
+
+.button--icon-close {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+.modal__text {
+  color: $color-title;
+  margin-top: 20px;
+  font-family: PTSansNarrow-Regular, sans-serif;
+  font-size: 19px;
+  margin-bottom: 45px;
+}

@@ -29,5 +29,10 @@ Order связан с Client и Table
 Через кнопку добавляем свой ip адрес и ждем пока подключится(в попабу нажать на кнопку добавить текущий ip)
 После этого запускаем npm run dev
 
-*если проект не запустился то проверьте папку config файл key.js(скрипт в key.js должен совподать со скриптом в key.dev.js)
-
+*если проект не запустился то проверьте папку config файл key.js( в ней должен находится следующий скрипт
+```js
+module.exports = {
+    mongooseURI: 'mongodb+srv://venera:NNxOiWlCYdXNIt1i@cluster0.dw1p8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+}
+```
+на  http://localhost:4200/ можно будет посмотреть проект

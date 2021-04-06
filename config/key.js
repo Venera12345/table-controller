@@ -1,5 +1,3 @@
-if(process.env.NODE_ENV === 'production') {
-    module.exports = require('./key.prod')
-} else {
-    module.exports = require('./key.dev')
+module.exports = {
+    mongooseURI: 'mongodb+srv://venera:NNxOiWlCYdXNIt1i@cluster0.dw1p8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 }
